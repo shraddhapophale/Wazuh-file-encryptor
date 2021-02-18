@@ -5,7 +5,7 @@
   "url": "https://github.com",
   "license": "V3",
   "description": "Encrypt a file on a host via Wazuh agent",
-  "dataTypeList": ["thehive:case", "thehive:case_artifact"],
+  "dataTypeList": ["file", "filename"],
   "command": "Wazuh-file-encryptor/wazuh-en.py",
   "baseConfig": "Wazuh-file-encryptor",
   "configurationItems": [
