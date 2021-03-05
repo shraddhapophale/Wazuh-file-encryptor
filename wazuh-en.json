@@ -2,7 +2,7 @@
   "name": "Wazuh-file-encryptor",
   "version": "1.0",
   "author": "SP",
-  "url": "https://github.com",
+  "url": "https://github.com/shraddhapophale/",
   "license": "V3",
   "description": "Encrypt a file on a host via Wazuh agent",
   "dataTypeList": ["file", "filename"],
