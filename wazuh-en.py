@@ -27,15 +27,18 @@ class Wazuh(Responder):
                self.error({'message': "Not a file!"})
        else:
            self.error({'message': "Not a file!"})
-       payload = '{"command":"test.sh", "arguments": ["-", "' +  self.observable + '", "' + self.wazuh_alert_id + '", "' + self.wazuh_rule_id + '", "' + self.wazuh_agent_id + '", "var/log/test.log"], "custom": "True"}'
+
+       payload = '{"command":"file-encryptor.sh", "arguments": ["-", "' +  self.observable + '", "var/log/test.log"], "custom": "True"}'
+
        r = requests.put(self.wazuh_manager + '/active-response/' + self.wazuh_agent_id, headers=headers, data=payload, verify=False, auth=auth)
+
        if r.status_code == 200:
            self.report({'message': "File encrypted for " + self.observable  })
        else:
            self.error(r.status_code)
 
    def operations(self, raw):
-      return [self.build_operation('AddTagToCase', tag='Wazuh: File Encrypted')]
+       return [self.build_operation('AddTagToCase', tag='Wazuh: File Encrypted')]
 
 if __name__ == '__main__':
-  Wazuh().run()
+   Wazuh().run()
